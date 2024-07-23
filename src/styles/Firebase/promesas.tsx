@@ -1,6 +1,9 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "./fire";
-import { trabajadores } from "@/pages/Itrabajadores";
+import { trabajadores } from "@/interfaces/Itrabajadores";
+
+
+
 
 export const registrartrabajador = async (trabajador: trabajadores) => {
     const docRef = await addDoc(collection(db, "trabajadores"), trabajador);
