@@ -18,6 +18,7 @@ const styles = css`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
   .izquierda {
@@ -28,7 +29,6 @@ const styles = css`
   .derecha {
     background-color: green;
     color: black;
-    position: relative;
   }
 
   .formulario-login {
@@ -59,11 +59,20 @@ const styles = css`
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #76c76d;
   }
 
   h1.welcome {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 10px;
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    width: 100%;
   }
 
   h1.title {
@@ -71,14 +80,19 @@ const styles = css`
     margin-bottom: 20px;
   }
 
+  img {
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+  }
 `;
 
 export const Perfil = () => {
-  const [trabajadorRut, settrabajadorRut] = useState('');
+  const [trabajadorRut, setTrabajadorRut] = useState('');
   const [adminRut, setAdminRut] = useState('');
   const router = useRouter();
 
-  const handletrabajadorIngreso = async () => {
+  const handleTrabajadorIngreso = async () => {
     try {
       const trabajador = await mostrarrut(trabajadorRut);
       if (trabajador) {
@@ -113,18 +127,19 @@ export const Perfil = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              handletrabajadorIngreso();
+              handleTrabajadorIngreso();
             }}
           >
+            <h1 className='welcome'>BIENVENIDO</h1>
+            <img src='/path/to/your/image.png' alt='Imagen' />
             <div className='formulario-login'>
-              <h1 className='welcome'>BIENVENIDO</h1>
               <h1 className='title'>Registro Trabajadores</h1>
               <label htmlFor='trabajador-rut'>RUT:</label>
               <input
                 type='text'
                 id='trabajador-rut'
                 value={trabajadorRut}
-                onChange={(e) => settrabajadorRut(e.target.value)}
+                onChange={(e) => setTrabajadorRut(e.target.value)}
                 required
               />
             </div>
@@ -140,6 +155,7 @@ export const Perfil = () => {
           >
             <div className='formulario-login'>
               <h1 className='welcome'>ADMIN</h1>
+              <h1>Registro de Admin</h1>
               <label htmlFor='admin-rut'>Admin RUT:</label>
               <input
                 type='text'
