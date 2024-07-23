@@ -54,7 +54,7 @@ const styles = css`
   button {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: blue;
+    background-color: #90EE90;
     color: white;
     border: none;
     border-radius: 4px;
