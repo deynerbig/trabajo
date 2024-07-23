@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Button, Form, FormLabel } from 'react-bootstrap';
 import { MdOutlineTipsAndUpdates } from "react-icons/md";
-import { trabajadores } from './Itrabajadores';
+import { trabajadores } from '../interfaces/Itrabajadores';
 
 const initialState: trabajadores = {
   nombre: "",

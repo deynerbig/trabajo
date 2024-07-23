@@ -8,7 +8,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from 'next/router';
 import { MdCancel } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
-import { trabajadores } from './Itrabajadores';
+import { trabajadores } from '../interfaces/Itrabajadores';
 
 export const Pagina2 = () => {
     const [trabajador, setTrabajador] = useState<trabajadores[]>([]);
@@ -57,6 +57,7 @@ export const Pagina2 = () => {
                         <th>RUT</th>
                         <th>Email</th>
                         <th>sexo</th>
+                        <th>puesto de trabajo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -71,6 +72,7 @@ export const Pagina2 = () => {
                                     <td>{p.rut}</td>
                                     <td>{p.email}</td>
                                     <td>{p.sexo}</td>
+                                    <td>{p.puesto}</td>
                                     <td>
                                         <Link href={{ pathname: 'Pagina3', query: { key: p.key } }}>
                                             <Button variant='warning'><MdTipsAndUpdates /></Button>

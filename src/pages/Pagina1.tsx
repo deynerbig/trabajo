@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button, Form, FormCheck, FormControl, FormGroup, FormLabel, FormSelect } from 'react-bootstrap';
 import { GiArchiveRegister } from "react-icons/gi";
 import { useRouter } from 'next/router';
-import { trabajadores } from './Itrabajadores';
+import { trabajadores } from '../interfaces/Itrabajadores';
 
 const initialState: trabajadores = {
     nombre: "",

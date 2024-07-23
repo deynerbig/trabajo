@@ -1,6 +1,7 @@
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "./fire"
-import { admins } from "@/pages/Iadmin";
+import { admins } from "@/interfaces/Iadmin";
+
 
 
 export const registraradmin=async(admins:admins)=>{

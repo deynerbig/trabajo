@@ -6,7 +6,7 @@ import { GiArchiveRegister } from "react-icons/gi";
 import { useRouter } from 'next/router';
 
 import { registraradmin } from '@/styles/Firebase/promesas2';
-import { admins } from './Iadmin';
+import { admins } from '../interfaces/Iadmin';
 
 const initialState: admins = {
     nombre: "",
