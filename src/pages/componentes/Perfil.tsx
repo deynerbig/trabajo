@@ -66,11 +66,6 @@ const styles = css`
     margin-bottom: 10px;
   }
 
-  h1.title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-
 `;
 
 export const Perfil = () => {
