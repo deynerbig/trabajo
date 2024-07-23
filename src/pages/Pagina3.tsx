@@ -1,15 +1,19 @@
-import { trabajadores } from '@/interfaces/Itrabajadores';
+
 import { actualizartrabajador, mostrartrabajador } from '@/styles/Firebase/promesas';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Button, Form, FormLabel } from 'react-bootstrap';
 import { MdOutlineTipsAndUpdates } from "react-icons/md";
+import { trabajadores } from './Itrabajadores';
+
 const initialState: trabajadores = {
   nombre: "",
   apellido: "",
   telefono: 0,
   rut: "",
-  email: ""
+  email: "",
+  sexo:"",
+  puesto:""
 };
 const initialErrors = {
   nombre: "",
@@ -74,7 +78,7 @@ export const Pagina3 = () => {
   const modificar = () => {
     if (validarformulario()){
       actualizartrabajador(trabajador).then(() => {
-        alert("🎉🎉🎉 Se ha modificado 🎉🎉🎉");
+        alert("🎉🎉🎉 Se ha Actualizado 🎉🎉🎉");
       }).catch((e) => {
         console.log(e);
         alert("Ocurrió un error");

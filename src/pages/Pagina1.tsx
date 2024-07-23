@@ -1,16 +1,18 @@
-import { trabajadores } from '@/interfaces/Itrabajadores';
 import { registrartrabajador } from '@/styles/Firebase/promesas';
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, FormCheck, FormControl, FormGroup, FormLabel, FormSelect } from 'react-bootstrap';
 import { GiArchiveRegister } from "react-icons/gi";
 import { useRouter } from 'next/router';
+import { trabajadores } from './Itrabajadores';
 
 const initialState: trabajadores = {
     nombre: "",
     apellido: "",
     telefono: 0,
     rut: "",
-    email: ""
+    email: "",
+    sexo: "Hombre",
+    puesto:"trabajador normal"
 };
 
 const initialErrores = {
@@ -150,6 +152,32 @@ export const Pagina1 = () => {
                     <Form.Control.Feedback type="invalid">
                         {errores.email}
                     </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>Elija su sexo</Form.Label>
+                    <Form.Select
+                        name='sexo'
+                        value={trabajador.sexo}
+                        onChange={(e) => handletrabajador(e.currentTarget.name, e.currentTarget.value)}
+                    >
+                        <option value="Hombre">Hombre</option>
+                        <option value="Mujer">Mujer</option>
+                    </Form.Select>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Elija su puesto de trabajo</Form.Label>
+                    <Form.Select 
+                    name='puesto' 
+                    value={trabajador.puesto}
+                    onChange={(e)=>handletrabajador(e.currentTarget.name,e.currentTarget.value)}
+                    >
+                        
+                        <option value="gerente">gerente</option>
+                        <option value="jefe">jefe interior</option>
+                        <option value="trabajador normal">trabajador normal</option>
+
+                    </Form.Select>
                 </Form.Group>
 
                 <Button type='button' variant='success' onClick={registrar}>

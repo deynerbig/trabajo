@@ -1,6 +1,6 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "./fire";
-import { trabajadores } from "@/interfaces/Itrabajadores";
+import { trabajadores } from "@/pages/Itrabajadores";
 
 export const registrartrabajador = async (trabajador: trabajadores) => {
     const docRef = await addDoc(collection(db, "trabajadores"), trabajador);
@@ -16,6 +16,8 @@ export const obtenertrabajadores = async () => {
             telefono: doc.data().telefono,
             rut: doc.data().rut,
             email: doc.data().email,
+            sexo:doc.data().sexo,
+            puesto:doc.data().puesto,
             key: doc.id
         };
         trabajadort.push(trabajadorr);
@@ -33,6 +35,8 @@ export const mostrartrabajador = async (key: string) => {
             telefono: docSnap.data().telefono,
             rut: docSnap.data().rut,
             email: docSnap.data().email,
+            sexo:docSnap.data().sexo,
+            puesto:docSnap.data().puesto,
             key: docSnap.id
         };
         return trabajadorr;
@@ -52,6 +56,8 @@ export const mostrarrut = async (rut: string) => {
             telefono: docSnap.data().telefono,
             rut: docSnap.data().rut,
             email: docSnap.data().email,
+            sexo:docSnap.data().sexo,
+            puesto:docSnap.data().puesto,
             key: docSnap.id
         };
         return trabajadorr;

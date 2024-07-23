@@ -1,4 +1,4 @@
-import { trabajadores } from '@/interfaces/Itrabajadores';
+
 import { obtenertrabajadores, eliminartrabajador } from '@/styles/Firebase/promesas';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -8,6 +8,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from 'next/router';
 import { MdCancel } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
+import { trabajadores } from './Itrabajadores';
 
 export const Pagina2 = () => {
     const [trabajador, setTrabajador] = useState<trabajadores[]>([]);
@@ -55,6 +56,7 @@ export const Pagina2 = () => {
                         <th>Teléfono</th>
                         <th>RUT</th>
                         <th>Email</th>
+                        <th>sexo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -68,6 +70,7 @@ export const Pagina2 = () => {
                                     <td>{p.telefono}</td>
                                     <td>{p.rut}</td>
                                     <td>{p.email}</td>
+                                    <td>{p.sexo}</td>
                                     <td>
                                         <Link href={{ pathname: 'Pagina3', query: { key: p.key } }}>
                                             <Button variant='warning'><MdTipsAndUpdates /></Button>

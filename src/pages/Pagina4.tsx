@@ -1,11 +1,12 @@
-import { trabajadores } from '@/interfaces/Itrabajadores';
+
 import { registrartrabajador } from '@/styles/Firebase/promesas';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { GiArchiveRegister } from "react-icons/gi";
 import { useRouter } from 'next/router';
-import { admins } from '@/interfaces/Iadmin';
+
 import { registraradmin } from '@/styles/Firebase/promesas2';
+import { admins } from './Iadmin';
 
 const initialState: admins = {
     nombre: "",

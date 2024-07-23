@@ -1,6 +1,7 @@
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "./fire"
-import { admins } from "@/interfaces/Iadmin";
+import { admins } from "@/pages/Iadmin";
+
 
 export const registraradmin=async(admins:admins)=>{
     const docRef=await addDoc(collection(db,"admin"),admins)
