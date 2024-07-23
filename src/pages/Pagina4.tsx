@@ -17,7 +17,7 @@ const initialErrores = {
     rut: ""
 };
 
-export const Pagina1 = () => {
+export const Pagina4 = () => {
     const [admin, setadmin] = useState<admins>(initialState);
     const [errores, setErrores] = useState(initialErrores);
     const router = useRouter();
@@ -101,4 +101,4 @@ export const Pagina1 = () => {
     );
 };
 
-export default Pagina1;
+export default Pagina4;
