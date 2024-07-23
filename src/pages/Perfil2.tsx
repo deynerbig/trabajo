@@ -2,7 +2,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import css from 'styled-jsx/css';
 import { GiArchiveRegister } from "react-icons/gi";
-import { FaTable } from "react-icons/fa";
+import { FaTable, FaArrowLeft } from "react-icons/fa";
+import Link from 'next/link';
 
 const styles = css`
   .container {
@@ -56,6 +57,8 @@ const styles = css`
     border-radius: 4px;
     cursor: pointer;
     margin: 10px;
+    display: flex;
+    align-items: center;
   }
 
   .nav-boton:hover {
@@ -79,6 +82,32 @@ const styles = css`
   .title-derecha {
     color: green;
   }
+
+  .back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .back-button:hover {
+    background-color: black;
+  }
+
+  .back-button svg {
+    margin-right: 10px;
+  }
 `;
 
 export const Perfil2 = () => {
@@ -86,26 +115,29 @@ export const Perfil2 = () => {
 
   return (
     <>
-      <div className='container'>
+      <div>
         <div className='mitad izquierda'>
           <div className='nav'>
-            <h1 className='title-izquierda'>registrar trabajador</h1>
-            <button
-              className='nav-boton'
-              onClick={() => router.push('/Pagina1')}
-            >
+            <h1 className='title-izquierda'>Registrar Trabajador</h1>
+            <nav>
+              <Link href="./componentes/Perfil">Regrese al Inicio</Link>
+            </nav>
+            <button className='nav-boton'onClick={() => router.push('/Pagina1')}>
               <GiArchiveRegister /> Registrese ya!
             </button>
           </div>
         </div>
         <div className='mitad derecha'>
           <div className='nav'>
-            <h1 className='title-derecha'>ver tabla de trabajadores</h1>
+            <h1 className='title-derecha'>Ver Tabla de Trabajadores</h1>
+            <nav>
+              <Link href="./componentes/Perfil">Regrese al Inicio</Link>
+            </nav>
             <button
               className='nav-boton'
               onClick={() => router.push('/Pagina2')}
             >
-              <FaTable />Tabla de Trabajadores
+              <FaTable /> Tabla de Trabajadores
             </button>
           </div>
         </div>

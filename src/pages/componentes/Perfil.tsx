@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import css from 'styled-jsx/css';
 import { mostrarrut } from '@/styles/Firebase/promesas';
+import { mostrar } from '@/styles/Firebase/promesas2';
+import Link from 'next/link';
 
 const styles = css`
   .container {
@@ -10,20 +12,20 @@ const styles = css`
     overflow: hidden;
   }
 
-  .left,
-  .right {
+  .izquierda,
+  .derecha {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .left {
+  .izquierda {
     background-color: black;
     color: green;
   }
 
-  .right {
+  .derecha {
     background-color: green;
     color: black;
     position: relative;
@@ -69,22 +71,16 @@ const styles = css`
     margin-bottom: 20px;
   }
 
-  .right img {
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain;
-    margin: 0 auto;
-    display: block;
-  }
 `;
 
 export const Perfil = () => {
-  const [rut, setRut] = useState('');
+  const [trabajadorRut, settrabajadorRut] = useState('');
+  const [adminRut, setAdminRut] = useState('');
   const router = useRouter();
 
-  const handleingreso = async () => {
+  const handletrabajadorIngreso = async () => {
     try {
-      const trabajador = await mostrarrut(rut);
+      const trabajador = await mostrarrut(trabajadorRut);
       if (trabajador) {
         alert(`Bienvenido ${trabajador.nombre}`);
         router.push('/Perfil2');
@@ -96,33 +92,65 @@ export const Perfil = () => {
     }
   };
 
+  const handleAdminIngreso = async () => {
+    try {
+      const admin = await mostrar(adminRut);
+      if (admin) {
+        alert(`Bienvenido ${admin.nombre}`);
+        router.push('/Pagina4');
+      } else {
+        alert('Admin no encontrado o RUT incorrecto');
+      }
+    } catch (error) {
+      console.error('Error al obtener el admin:', error);
+    }
+  };
+
   return (
     <>
       <div className='container'>
-        <div className='left'>
+        <div className='izquierda'>
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              handleingreso();
+              handletrabajadorIngreso();
             }}
           >
             <div className='formulario-login'>
               <h1 className='welcome'>BIENVENIDO</h1>
               <h1 className='title'>Registro Trabajadores</h1>
-              <label htmlFor='rut'>RUT:</label>
+              <label htmlFor='trabajador-rut'>RUT:</label>
               <input
                 type='text'
-                id='rut'
-                value={rut}
-                onChange={(e) => setRut(e.target.value)}
+                id='trabajador-rut'
+                value={trabajadorRut}
+                onChange={(e) => settrabajadorRut(e.target.value)}
                 required
               />
             </div>
             <button type='submit'>Iniciar Sesión</button>
           </form>
         </div>
-        <div className='right'>
-          <img src="https://static.vecteezy.com/system/resources/previews/002/520/958/large_2x/teamwork-illustration-concept-free-vector.jpg" alt="trabajo" />
+        <div className='derecha'>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleAdminIngreso();
+            }}
+          >
+            <div className='formulario-login'>
+              <h1 className='welcome'>ADMIN</h1>
+              <label htmlFor='admin-rut'>Admin RUT:</label>
+              <input
+                type='text'
+                id='admin-rut'
+                value={adminRut}
+                onChange={(e) => setAdminRut(e.target.value)}
+                required
+              />
+            </div>
+            <button type='submit'>Iniciar como Admin</button>
+          </form>
         </div>
       </div>
       <style jsx>{styles}</style>
